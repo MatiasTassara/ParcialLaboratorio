@@ -23,7 +23,7 @@ public class Publicacion {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "comentario")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "publicacion")
     private List<Comentario> comentarios;
 
     public Publicacion(){}

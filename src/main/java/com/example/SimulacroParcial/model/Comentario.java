@@ -18,17 +18,17 @@ public class Comentario {
     private String owner;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publicacion_id", referencedColumnName = "id")
-    private Comentario comentario;
+    private Publicacion publicacion;
 
     public Comentario(){
 
     }
 
-    public Comentario(String descripcion, LocalDateTime fecha, String owner, Comentario comentario) {
+    public Comentario(String descripcion, LocalDateTime fecha, String owner, Publicacion publicacion) {
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.owner = owner;
-        this.comentario = comentario;
+        this.publicacion = publicacion;
     }
 
     public Integer getId() {
@@ -63,11 +63,11 @@ public class Comentario {
         this.owner = owner;
     }
 
-    public Comentario getComentario() {
-        return comentario;
+    public Publicacion getPublicacion() {
+        return publicacion;
     }
 
-    public void setComentario(Comentario comentario) {
-        this.comentario = comentario;
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
     }
 }

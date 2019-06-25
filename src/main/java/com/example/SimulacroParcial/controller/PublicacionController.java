@@ -1,7 +1,10 @@
 package com.example.SimulacroParcial.controller;
 
 import com.example.SimulacroParcial.model.Publicacion;
+import com.example.SimulacroParcial.model.PublicacionDTO;
 import com.example.SimulacroParcial.model.Usuario;
+import com.example.SimulacroParcial.service.FormatoQuery;
+import com.example.SimulacroParcial.service.PublicacionDTORepository;
 import com.example.SimulacroParcial.service.PublicacionRepository;
 import com.example.SimulacroParcial.service.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,8 @@ public class PublicacionController {
     private PublicacionRepository publicacionRepository;
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    PublicacionDTORepository publicacionDTORepository;
 
     @PostMapping("/{id}")
     public void add(@RequestBody Publicacion p, @PathVariable Integer id){
@@ -42,6 +47,20 @@ public class PublicacionController {
     @GetMapping("")
     public List<Publicacion> getAll(){
         return publicacionRepository.findAll();
+    }
+
+
+    //*****PUNTO1 SEGUNDO PARCIAL
+    @GetMapping("/projection")
+    public List<FormatoQuery> getPunto1(){
+        return publicacionRepository.getFormatoPunto1();
+    }
+
+    //PUNTO 2
+
+    @GetMapping("/dtoPubli")
+    public List<PublicacionDTO> getAllDTOPubli(){
+        return publicacionDTORepository.getAllDTOs();
     }
 
 }
